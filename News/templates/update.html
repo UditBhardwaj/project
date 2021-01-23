@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}<br>
+<h5>Update </h5><br>
+{% if user.is_authenticated %}
+<form method="post"> 
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    {% if user.id == article.author.id %}
+    <input class="btn btn-success mr-2" data-toggle="modal" type="submit" value="Save">
+    {% endif %} 
+</form> 
+{% else %}
+<h5>Sorry you are not logged in </h5>
+{% endif %} 
+{% endblock %}

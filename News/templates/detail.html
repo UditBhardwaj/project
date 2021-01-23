@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container my-3">
+<div class="blog-post">
+        <h2 class="blog-post-title">{{article.title}}</h2>
+        <p class="blog-post-meta">{{article.datetime}} by {{article.author}}</a></p>
+
+        <p>{{article.description}}</p>
+        <hr>
+      </div>
+      
+
+ {% if user.id == article.author.id %}
+<a href="{% url 'update' article.pk %}"><button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal">Update</button></a>
+<a href="{% url 'delete' article.pk %}"><button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal">Delete</button></a>
+{% endif %}
+</div>
+{% endblock %}
